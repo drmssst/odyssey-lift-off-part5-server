@@ -8,6 +8,7 @@ const resolvers = {
     // get a single track by ID, for the track page
     track: (_, { id }, { dataSources }) => {
       return dataSources.trackAPI.getTrack(id);
+
     },
 
     // get a single module by ID, for the module detail page
@@ -44,7 +45,12 @@ const resolvers = {
     modules: ({ id }, _, { dataSources }) => {
       return dataSources.trackAPI.getTrackModules(id);
     },
+
+    durationInSeconds: ({ length }) => length
   },
+  Module: {
+    durationInSeconds: ({ length }) => length
+  }
 };
 
 module.exports = resolvers;
